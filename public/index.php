@@ -1,21 +1,38 @@
 <?php
 
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
-define('LARAVEL_START', microtime(true));
+/**
+ * Registrar el cargador automático generado por Composer
+ * Esto permite cargar todas las dependencias del proyecto.
+ */
+require __DIR__.'/../bootstrap/autoload.php';
 
-// Cargar el autoloader de Composer
-require __DIR__.'/../vendor/autoload.php';
-
-// Cargar la aplicación de Laravel
+/**
+ * Encender la aplicación
+ * Aquí se crea una nueva instancia de la aplicación Laravel.
+ */
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
-// Crear una instancia del kernel HTTP
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+/**
+ * Crear una instancia del kernel HTTP
+ * El kernel maneja las solicitudes y respuestas.
+ */
+$kernel = $app->make(Kernel::class);
 
-// Manejar la solicitud y enviar la respuesta
-$response = $kernel->handle(
-    $request = Request::capture()
-)->send();
+/**
+ * Capturar la solicitud HTTP entrante
+ */
+$request = Request::capture();
 
+/**
+ * Manejar la solicitud y enviar la respuesta al navegador
+ */
+$response = $kernel->handle($request)->send();
+
+/**
+ * Terminar la ejecución de la aplicación
+ * Aquí se ejecutan tareas posteriores, como cerrar conexiones.
+ */
 $kernel->terminate($request, $response);
