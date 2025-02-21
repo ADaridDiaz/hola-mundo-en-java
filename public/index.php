@@ -13,7 +13,7 @@ require __DIR__.'/../vendor/autoload.php';
  * Encender la aplicación
  * Aquí se crea una nueva instancia de la aplicación Laravel.
  */
-$app = require __DIR__.'/../vendor/autoload.php';
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
 /**
  * Crear una instancia del kernel HTTP
