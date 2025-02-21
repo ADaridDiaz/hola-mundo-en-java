@@ -1,4 +1,2 @@
-import * as alpine from 'alpinejs/dist/cdn';
-
-
-export { alpine };
+import './bootstrap';
+import 'preline';
