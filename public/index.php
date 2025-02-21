@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
  * Registrar el cargador automático generado por Composer
  * Esto permite cargar todas las dependencias del proyecto.
  */
-require __DIR__.'/../bootstrap/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 /**
  * Encender la aplicación
