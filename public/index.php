@@ -24,9 +24,13 @@ $kernel = $app->make(Kernel::class);
 $request = Request::capture();
 
 /**
- * Manejar la solicitud y enviar la respuesta al navegador
+ * Manejar la solicitud y generar la respuesta
  */
 $response = $kernel->handle($request);
+
+/**
+ * Enviar la respuesta al navegador
+ */
 $response->send();
 
 /**
